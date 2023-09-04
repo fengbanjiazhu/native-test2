@@ -4,6 +4,8 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
+import MealsNavigation from "./navigation/MealsNavigation";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -24,12 +26,7 @@ export default function App() {
 
   if (!fontsLoaded) return null;
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <MealsNavigation />;
 }
 
 const styles = StyleSheet.create({

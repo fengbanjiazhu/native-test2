@@ -5,6 +5,7 @@ function CategoriesScreen() {
   return (
     <View style={styles.screen}>
       <Text>The Categories Screen</Text>
+      <Text>Test?</Text>
     </View>
   );
 }
