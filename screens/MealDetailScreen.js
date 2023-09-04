@@ -1,10 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-function MealDetailScreen() {
+// push(),goBack(),pop(),popToTop(),replace()
+function MealDetailScreen({ navigation }) {
   return (
     <View style={styles.screen}>
       <Text>MealDetailScreen</Text>
+      <Button
+        title="Back to home"
+        onPress={() => {
+          navigation.popToTop();
+        }}
+      />
     </View>
   );
 }
