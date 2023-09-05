@@ -2,10 +2,13 @@ import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { enableScreens } from "react-native-screens";
 
 import MealsNavigation from "./navigation/MealsNavigation";
 
 SplashScreen.preventAutoHideAsync();
+
+enableScreens();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
