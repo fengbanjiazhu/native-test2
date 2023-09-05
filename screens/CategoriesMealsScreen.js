@@ -20,6 +20,15 @@ function CategoriesMealsScreen({ navigation }) {
   );
 }
 
+CategoriesMealsScreen.navigationOptions = (navigationData) => {
+  const cateId = navigationData.navigation.getParam("categoryID");
+  const { title } = CATEGORIES.find((cat) => cat.id === cateId);
+
+  return {
+    headerTitle: title,
+  };
+};
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
