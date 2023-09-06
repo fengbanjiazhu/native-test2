@@ -5,7 +5,14 @@ import MealItem from "../components/MealItem";
 
 function CategoriesMealsScreen({ navigation }) {
   const renderMealItem = (itemData) => {
-    return <MealItem item={itemData.item} onSelect={() => {}} />;
+    return (
+      <MealItem
+        item={itemData.item}
+        onSelect={() => {
+          navigation.navigate("MealDetail", { mealId: itemData.item.id });
+        }}
+      />
+    );
   };
 
   const cateId = navigation.getParam("categoryID");
