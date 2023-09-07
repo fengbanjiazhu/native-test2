@@ -5,8 +5,9 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 
 // push(),goBack(),pop(),popToTop(),replace()
-function MealDetailScreen({ navigation }) {
-  const mealId = navigation.getParam("mealId");
+function MealDetailScreen({ route, navigation }) {
+  const { mealId } = route.params;
+
   const selectedMeals = MEALS.find((meal) => meal.id === mealId);
   const { title } = selectedMeals;
   return (
@@ -22,8 +23,11 @@ function MealDetailScreen({ navigation }) {
   );
 }
 
-MealDetailScreen.navigationOptions = (navigationData) => {
+MealDetailScreen.navigationOptions = (route, navigationData) => {
   const mealId = navigationData.navigation.getParam("mealId");
+
+  // const { mealId } = route.params;
+  console.log(mealId);
   const { title } = MEALS.find((meal) => meal.id === mealId);
 
   return {
