@@ -9,7 +9,10 @@ function CategoriesMealsScreen({ route, navigation }) {
       <MealItem
         item={itemData.item}
         onSelect={() => {
-          navigation.navigate("MealDetail", { mealId: itemData.item.id });
+          navigation.navigate("MealDetail", {
+            mealId: itemData.item.id,
+            title: itemData.item.title,
+          });
         }}
       />
     );

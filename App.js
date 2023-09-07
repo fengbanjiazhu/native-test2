@@ -3,12 +3,10 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { enableScreens } from "react-native-screens";
 import { NavigationContainer } from "@react-navigation/native";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import FavoriteScreen from "./screens/FavoriteScreen";
-import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsNavigation from "./navigation/MealsNavigation";
+import FavoriteScreen from "./screens/FavoriteScreen";
 
 SplashScreen.preventAutoHideAsync();
 
