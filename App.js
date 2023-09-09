@@ -5,8 +5,12 @@ import { enableScreens } from "react-native-screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { Ionicons } from "@expo/vector-icons";
+
 import MealsNavigation from "./navigation/MealsNavigation";
 import FavoriteScreen from "./screens/FavoriteScreen";
+
+import Colors from "./constants/Colors";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,9 +37,28 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Meals" component={MealsNavigation} />
-        <Tab.Screen name="Fav" component={FavoriteScreen} />
+      <Tab.Navigator
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primaryColor }}
+      >
+        <Tab.Screen
+          name="Meals"
+          component={MealsNavigation}
+          options={{
+            tabBarIcon: ({ color }) => {
+              return <Ionicons name="ios-restaurant" size={25} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Fav"
+          component={FavoriteScreen}
+          options={{
+            tabBarLabel: "Favorites",
+            tabBarIcon: ({ color }) => {
+              return <Ionicons name="ios-star" size={25} color={color} />;
+            },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
