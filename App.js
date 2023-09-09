@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Meals" component={MealsNavigation} />
         <Tab.Screen name="Fav" component={FavoriteScreen} />
       </Tab.Navigator>
