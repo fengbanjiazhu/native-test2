@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -6,8 +6,23 @@ import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
-  const { mealId } = route.params;
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomizeHeaderButton}>
+          <Item
+            title="Favorite"
+            iconName="ios-star"
+            onPress={() => {
+              console.log("Marked");
+            }}
+          />
+        </HeaderButtons>
+      ),
+    });
+  }, [navigation]);
 
+  const { mealId } = route.params;
   const selectedMeals = MEALS.find((meal) => meal.id === mealId);
   const { title } = selectedMeals;
   return (
@@ -22,29 +37,6 @@ function MealDetailScreen({ route, navigation }) {
     </View>
   );
 }
-
-MealDetailScreen.navigationOptions = (route, navigationData) => {
-  const mealId = navigationData.navigation.getParam("mealId");
-
-  // const { mealId } = route.params;
-  console.log(mealId);
-  const { title } = MEALS.find((meal) => meal.id === mealId);
-
-  return {
-    headerTitle: title,
-    headerRight: (
-      <HeaderButtons HeaderButtonComponent={CustomizeHeaderButton}>
-        <Item
-          title="Favorite"
-          iconName="ios-star"
-          onPress={() => {
-            console.log("Marked");
-          }}
-        />
-      </HeaderButtons>
-    ),
-  };
-};
 
 const styles = StyleSheet.create({
   screen: {

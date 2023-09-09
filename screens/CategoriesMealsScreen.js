@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
@@ -11,7 +11,6 @@ function CategoriesMealsScreen({ route, navigation }) {
         onSelect={() => {
           navigation.navigate("MealDetail", {
             mealId: itemData.item.id,
-            title: itemData.item.title,
           });
         }}
       />
@@ -27,15 +26,6 @@ function CategoriesMealsScreen({ route, navigation }) {
     </View>
   );
 }
-
-CategoriesMealsScreen.navigationOptions = (navigationData) => {
-  const cateId = navigationData.navigation.getParam("categoryID");
-  const { title } = CATEGORIES.find((cat) => cat.id === cateId);
-
-  return {
-    headerTitle: title,
-  };
-};
 
 const styles = StyleSheet.create({
   screen: {

@@ -11,7 +11,10 @@ function CategoriesScreen({ navigation }) {
         title={itemData.item.title}
         color={itemData.item.color}
         onSelect={() => {
-          navigation.navigate("CategoryMeals", { categoryID: itemData.item.id });
+          navigation.navigate("CategoryMeals", {
+            categoryID: itemData.item.id,
+            title: itemData.item.title,
+          });
         }}
       />
     );

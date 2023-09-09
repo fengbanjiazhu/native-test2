@@ -9,7 +9,11 @@ function MealsNavigation() {
   return (
     <MealsNavigator.Navigator initialRouteName="Categories">
       <MealsNavigator.Screen name="Categories" component={CategoriesScreen} />
-      <MealsNavigator.Screen name="CategoryMeals" component={CategoriesMealsScreen} />
+      <MealsNavigator.Screen
+        name="CategoryMeals"
+        component={CategoriesMealsScreen}
+        options={({ route }) => ({ title: route.params.title })}
+      />
       <MealsNavigator.Screen
         name="MealDetail"
         component={MealDetailScreen}
