@@ -2,7 +2,7 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FilterScreen from "../screens/FilterScreen";
-import FavoriteNavigation from "./FavoriteNavigation";
+import MealAndFavNavigation from "./MealAndFavNavigation";
 
 import Colors from "../constants/Colors";
 
@@ -23,8 +23,8 @@ const FilterScreenWrapper = () => {
 
 function MainNavigation() {
   return (
-    <Drawer.Navigator initialRouteName="Favorite">
-      <Drawer.Screen name="Favorite" component={FavoriteNavigation} />
+    <Drawer.Navigator initialRouteName="Favorite" screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="Favorite" component={MealAndFavNavigation} />
       <Drawer.Screen name="Filter" component={FilterScreenWrapper} />
     </Drawer.Navigator>
   );
