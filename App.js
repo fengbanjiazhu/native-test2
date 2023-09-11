@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import MealsNavigation from "./navigation/MealsNavigation";
-import FavoriteScreen from "./screens/FavoriteScreen";
+import FavoriteNavigation from "./navigation/FavoriteNavigation";
 
 import Colors from "./constants/Colors";
 
@@ -51,7 +51,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Fav"
-          component={FavoriteScreen}
+          component={FavoriteNavigation}
           options={{
             tabBarLabel: "Favorites",
             tabBarIcon: ({ color }) => {
