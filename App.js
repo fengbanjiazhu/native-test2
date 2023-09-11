@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -9,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import MealsNavigation from "./navigation/MealsNavigation";
 import FavoriteNavigation from "./navigation/FavoriteNavigation";
+import MainNavigation from "./navigation/MainNavigation";
 
 import Colors from "./constants/Colors";
 
@@ -37,6 +39,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      {/* <MainNavigation /> */}
       <Tab.Navigator
         screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primaryColor }}
       >
