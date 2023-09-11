@@ -15,11 +15,15 @@ function FavoriteNavigation() {
       initialRouteName="Favorite"
       screenOptions={{
         headerTitleStyle: { color: Colors.primaryColor },
-        headerTitle: "Your Favorite Meals",
+        headerTitle: "Favorite Meals",
       }}
     >
       <FavoriteNavigator.Screen name="Favorite" component={FavoriteScreen} />
-      <FavoriteNavigator.Screen name="MealDetail" component={MealDetailScreen} />
+      <FavoriteNavigator.Screen
+        name="MealDetail"
+        options={{ headerTitle: "Meal Details" }}
+        component={MealDetailScreen}
+      />
     </FavoriteNavigator.Navigator>
   );
 }
