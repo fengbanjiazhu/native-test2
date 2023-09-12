@@ -11,7 +11,7 @@ function MealsNavigation() {
   return (
     <MealsNavigator.Navigator
       initialRouteName="Categories"
-      screenOptions={{ headerTitleStyle: { color: Colors.primaryColor } }}
+      screenOptions={{ headerTitleStyle: { color: Colors.primaryColor }, headerBackTitle: "Back" }}
     >
       <MealsNavigator.Screen name="Categories" component={CategoriesScreen} />
       <MealsNavigator.Screen

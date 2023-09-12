@@ -25,7 +25,11 @@ function MainNavigation() {
   return (
     <Drawer.Navigator
       initialRouteName="Favorite"
-      screenOptions={{ headerShown: false, drawerActiveTintColor: Colors.accentColor }}
+      screenOptions={{
+        headerShown: false,
+        drawerActiveTintColor: Colors.accentColor,
+        drawerLabelStyle: { fontFamily: "open-sans-bold" },
+      }}
     >
       <Drawer.Screen
         name="Favorite"
