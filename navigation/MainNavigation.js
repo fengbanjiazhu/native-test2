@@ -14,18 +14,29 @@ const FilterScreenWrapper = () => {
   return (
     <FilterNav.Navigator
       screenOptions={{ headerTitleStyle: { color: Colors.primaryColor }, headerTitle: "Filter" }}
-      initialRouteName="Filter"
+      initialRouteName="FilterScreen"
     >
-      <FilterNav.Screen name="Filter" component={FilterScreen} />
+      <FilterNav.Screen name="FilterScreen" component={FilterScreen} />
     </FilterNav.Navigator>
   );
 };
 
 function MainNavigation() {
   return (
-    <Drawer.Navigator initialRouteName="Favorite" screenOptions={{ headerShown: false }}>
-      <Drawer.Screen name="Favorite" component={MealAndFavNavigation} />
-      <Drawer.Screen name="Filter" component={FilterScreenWrapper} />
+    <Drawer.Navigator
+      initialRouteName="Favorite"
+      screenOptions={{ headerShown: false, drawerActiveTintColor: Colors.accentColor }}
+    >
+      <Drawer.Screen
+        name="Favorite"
+        options={{ drawerLabel: "Meals" }}
+        component={MealAndFavNavigation}
+      />
+      <Drawer.Screen
+        name="Filter"
+        options={{ drawerLabel: "Filter" }}
+        component={FilterScreenWrapper}
+      />
     </Drawer.Navigator>
   );
 }

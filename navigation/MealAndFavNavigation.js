@@ -10,7 +10,7 @@ function MealAndFavNavigation() {
 
   return (
     <Tab.Navigator
-      screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primaryColor }}
+      screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.accentColor }}
     >
       <Tab.Screen
         name="Meals"

@@ -5,7 +5,7 @@ import CategoriesGridTile from "../components/CategoriesGridTile";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 
-// import { DrawerActions } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native";
 
 import { CATEGORIES } from "../data/dummy-data";
 
@@ -18,7 +18,7 @@ function CategoriesScreen({ navigation }) {
             title="Menu"
             iconName="ios-menu"
             onPress={() => {
-              // navigation.dispatch(DrawerActions.toggleDrawer());
+              navigation.dispatch(DrawerActions.toggleDrawer());
             }}
           />
         </HeaderButtons>

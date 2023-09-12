@@ -1,6 +1,5 @@
 import React from "react";
 import { MEALS } from "../data/dummy-data";
-import MealItem from "../components/MealItem";
 import MealList from "../components/MealList";
 
 function CategoriesMealsScreen({ route, navigation }) {
