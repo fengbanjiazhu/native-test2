@@ -4,6 +4,7 @@ import { MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 import DefaultText from "../components/DefaultText";
+import ListItem from "../components/ListItem";
 
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
@@ -48,12 +49,12 @@ function MealDetailScreen({ route, navigation }) {
       </View>
       <Text style={styles.title}>Ingredients</Text>
       {ingredients.map((ingredient) => (
-        <Text key={ingredient}>{ingredient}</Text>
+        <ListItem key={ingredient}>{ingredient}</ListItem>
       ))}
 
       <Text style={styles.title}>Steps</Text>
       {steps.map((step) => (
-        <Text key={step}>{step}</Text>
+        <ListItem key={step}>{step}</ListItem>
       ))}
     </ScrollView>
   );
