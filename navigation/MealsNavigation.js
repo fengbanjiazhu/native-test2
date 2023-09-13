@@ -25,7 +25,11 @@ function MealsNavigation() {
         component={CategoriesMealsScreen}
         options={({ route }) => ({ title: route.params.title })}
       />
-      <MealsNavigator.Screen name="MealDetail" component={MealDetailScreen} />
+      <MealsNavigator.Screen
+        name="MealDetail"
+        component={MealDetailScreen}
+        options={({ route }) => ({ title: route.params.title })}
+      />
     </MealsNavigator.Navigator>
   );
 }

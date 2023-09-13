@@ -14,12 +14,13 @@ function FavoriteNavigation() {
       screenOptions={{
         headerTitleStyle: { color: Colors.primaryColor },
         headerTitle: "Favorite Meals",
+        headerBackTitle: "Back",
       }}
     >
       <FavoriteNavigator.Screen name="Favorite" component={FavoriteScreen} />
       <FavoriteNavigator.Screen
         name="MealDetail"
-        options={{ headerTitle: "Meal Details" }}
+        options={({ route }) => ({ headerTitle: route.params.title })}
         component={MealDetailScreen}
       />
     </FavoriteNavigator.Navigator>

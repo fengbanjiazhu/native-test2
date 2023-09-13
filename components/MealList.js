@@ -10,6 +10,7 @@ function MealList({ listData, navigation }) {
         onSelect={() => {
           navigation.navigate("MealDetail", {
             mealId: itemData.item.id,
+            title: itemData.item.title,
           });
         }}
       />
