@@ -1,13 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
-import Colors from "../constants/Colors";
 import FilterSwitch from "../components/FilterSwitch";
 
-function FilterScreen() {
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
+import { DrawerActions } from "@react-navigation/native";
+
+function FilterScreen({ navigation }) {
   const [isGlutenFree, setIsGlutenFree] = useState(false);
   const [isLactoseFree, setIsLactoseFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={CustomizeHeaderButton}>
+          <Item
+            title="Menu"
+            iconName="ios-menu"
+            onPress={() => {
+              navigation.dispatch(DrawerActions.toggleDrawer());
+            }}
+          />
+        </HeaderButtons>
+      ),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomizeHeaderButton}>
+          <Item
+            title="Save"
+            iconName="ios-save"
+            onPress={() => {
+              console.log("Saved");
+            }}
+          />
+        </HeaderButtons>
+      ),
+    });
+  }, [navigation]);
 
   return (
     <View style={styles.screen}>
