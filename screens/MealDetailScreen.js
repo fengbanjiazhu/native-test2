@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, ScrollView, Image } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
+import DefaultText from "../components/DefaultText";
 
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
@@ -24,25 +25,54 @@ function MealDetailScreen({ route, navigation }) {
 
   const { mealId } = route.params;
   const selectedMeals = MEALS.find((meal) => meal.id === mealId);
-  const { title } = selectedMeals;
+  const {
+    duration,
+    complexity,
+    affordability,
+    imageUrl,
+    ingredients,
+    steps,
+    isGlutenFree,
+    isVegan,
+    isVegetarian,
+    isLactoseFree,
+  } = selectedMeals;
+
   return (
-    <View style={styles.screen}>
-      <Text>{title}</Text>
-      <Button
-        title="Back to home"
-        onPress={() => {
-          navigation.popToTop();
-        }}
-      />
-    </View>
+    <ScrollView>
+      <Image source={{ uri: imageUrl }} style={styles.image} />
+      <View style={styles.details}>
+        <DefaultText>{duration} mins</DefaultText>
+        <DefaultText>{complexity.toUpperCase()}</DefaultText>
+        <DefaultText>{affordability.toUpperCase()}</DefaultText>
+      </View>
+      <Text style={styles.title}>Ingredients</Text>
+      {ingredients.map((ingredient) => (
+        <Text key={ingredient}>{ingredient}</Text>
+      ))}
+
+      <Text style={styles.title}>Steps</Text>
+      {steps.map((step) => (
+        <Text key={step}>{step}</Text>
+      ))}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 22,
+    textAlign: "center",
+  },
+  details: {
+    flexDirection: "row",
+    padding: 15,
+    justifyContent: "space-around",
+  },
+  image: {
+    width: "100%",
+    aspectRatio: 16 / 9,
   },
 });
 
