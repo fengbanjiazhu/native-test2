@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Switch } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import FilterSwitch from "../components/FilterSwitch";
+import { CommonActions } from "@react-navigation/native";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
@@ -11,6 +12,21 @@ function FilterScreen({ navigation }) {
   const [isLactoseFree, setIsLactoseFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+
+  const appliedFilters = {
+    glutenFree: isGlutenFree,
+    lactoseFree: isLactoseFree,
+    vegan: isVegan,
+    vegetarian: isVegetarian,
+  };
+
+  const saveFilters = () => {
+    console.log(appliedFilters);
+  };
+
+  useEffect(() => {
+    navigation.dispatch(CommonActions.setParams({ filter: appliedFilters }));
+  }, [navigation]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -31,13 +47,13 @@ function FilterScreen({ navigation }) {
             title="Save"
             iconName="ios-save"
             onPress={() => {
-              console.log("Saved");
+              saveFilters();
             }}
           />
         </HeaderButtons>
       ),
     });
-  }, [navigation]);
+  }, [navigation, saveFilters]);
 
   return (
     <View style={styles.screen}>
@@ -45,18 +61,24 @@ function FilterScreen({ navigation }) {
       <FilterSwitch
         title="Gluten-free"
         state={isGlutenFree}
-        onChange={(newValue) => setIsGlutenFree(newValue)}
+        valueChangeHandler={(newValue) => setIsGlutenFree(newValue)}
       />
       <FilterSwitch
         title="Lactose-free"
         state={isLactoseFree}
-        onChange={(newValue) => setIsLactoseFree(newValue)}
+        valueChangeHandler={(newValue) => setIsLactoseFree(newValue)}
       />
-      <FilterSwitch title="Vegan" state={isVegan} onChange={(newValue) => setIsVegan(newValue)} />
+      <FilterSwitch
+        title="Vegan"
+        state={isVegan}
+        valueChangeHandler={(newValue) => setIsVegan(newValue)}
+      />
       <FilterSwitch
         title="Vegetarian"
         state={isVegetarian}
-        onChange={(newValue) => setIsVegetarian(newValue)}
+        valueChangeHandler={(newValue) => {
+          setIsVegetarian(newValue);
+        }}
       />
     </View>
   );
