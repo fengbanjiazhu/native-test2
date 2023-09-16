@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import MealList from "../components/MealList";
-import { MEALS } from "../data/dummy-data";
+
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
+
+import { useSelector } from "react-redux";
 
 import { DrawerActions } from "@react-navigation/native";
 
 function FavoriteScreen({ navigation }) {
+  const favMeals = useSelector((state) => state.meals.favoriteMeals);
+
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -22,9 +26,8 @@ function FavoriteScreen({ navigation }) {
       ),
     });
   }, [navigation]);
-  const favoriteMeals = MEALS.filter((meal) => meal.id === "m1" || "m2");
 
-  return <MealList listData={favoriteMeals} navigation={navigation} />;
+  return <MealList listData={favMeals} navigation={navigation} />;
 }
 
 export default FavoriteScreen;

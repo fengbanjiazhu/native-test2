@@ -4,7 +4,7 @@ import mealReducer from "./mealReducer";
 
 const store = configureStore({
   reducer: {
-    meal: mealReducer,
+    meals: mealReducer,
   },
 });
 

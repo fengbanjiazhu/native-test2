@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Button, ScrollView, Image } from "react-native";
-import { MEALS } from "../data/dummy-data";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 import DefaultText from "../components/DefaultText";
 import ListItem from "../components/ListItem";
 
+import { useSelector } from "react-redux";
+
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
+  const allMeal = useSelector((state) => state.meals.meals);
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -25,7 +28,7 @@ function MealDetailScreen({ route, navigation }) {
   }, [navigation]);
 
   const { mealId } = route.params;
-  const selectedMeals = MEALS.find((meal) => meal.id === mealId);
+  const selectedMeals = allMeal.find((meal) => meal.id === mealId);
   const {
     duration,
     complexity,
