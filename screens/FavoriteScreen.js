@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import MealList from "../components/MealList";
+import { View, StyleSheet } from "react-native";
+import DefaultText from "../components/DefaultText";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
@@ -28,7 +30,22 @@ function FavoriteScreen({ navigation }) {
     });
   }, [navigation]);
 
+  if (favMeals.length === 0 || !favMeals)
+    return (
+      <View style={styles.screen}>
+        <DefaultText>No Favorite yet</DefaultText>
+      </View>
+    );
+
   return <MealList listData={favMeals} navigation={navigation} />;
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default FavoriteScreen;
