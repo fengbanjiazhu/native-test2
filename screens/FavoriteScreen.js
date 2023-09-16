@@ -5,11 +5,12 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 
 import { useSelector } from "react-redux";
+import { getFavoriteMeals } from "../store/mealReducer";
 
 import { DrawerActions } from "@react-navigation/native";
 
 function FavoriteScreen({ navigation }) {
-  const favMeals = useSelector((state) => state.meals.favoriteMeals);
+  const favMeals = useSelector(getFavoriteMeals);
 
   useEffect(() => {
     navigation.setOptions({

@@ -5,11 +5,15 @@ import CustomizeHeaderButton from "../components/CustomizeHeaderButton";
 import DefaultText from "../components/DefaultText";
 import ListItem from "../components/ListItem";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleFavorite } from "../store/mealReducer";
 
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
   const allMeal = useSelector((state) => state.meals.meals);
+  const dispatch = useDispatch();
+  const { mealId } = route.params;
+  const selectedMeal = allMeal.find((meal) => meal.id === mealId);
 
   useEffect(() => {
     navigation.setOptions({
@@ -19,7 +23,8 @@ function MealDetailScreen({ route, navigation }) {
             title="Favorite"
             iconName="ios-star"
             onPress={() => {
-              console.log("Marked");
+              console.log("Marked:", mealId);
+              dispatch(toggleFavorite(mealId));
             }}
           />
         </HeaderButtons>
@@ -27,8 +32,6 @@ function MealDetailScreen({ route, navigation }) {
     });
   }, [navigation]);
 
-  const { mealId } = route.params;
-  const selectedMeals = allMeal.find((meal) => meal.id === mealId);
   const {
     duration,
     complexity,
@@ -40,7 +43,7 @@ function MealDetailScreen({ route, navigation }) {
     isVegan,
     isVegetarian,
     isLactoseFree,
-  } = selectedMeals;
+  } = selectedMeal;
 
   return (
     <ScrollView>
