@@ -11,9 +11,12 @@ import { toggleFavorite } from "../store/mealReducer";
 // push(),goBack(),pop(),popToTop(),replace()
 function MealDetailScreen({ route, navigation }) {
   const allMeal = useSelector((state) => state.meals.meals);
+  const { favoriteMealsId } = useSelector((state) => state.meals);
   const dispatch = useDispatch();
   const { mealId } = route.params;
+
   const selectedMeal = allMeal.find((meal) => meal.id === mealId);
+  const isFavorite = favoriteMealsId.includes(mealId);
 
   useEffect(() => {
     navigation.setOptions({
@@ -21,16 +24,15 @@ function MealDetailScreen({ route, navigation }) {
         <HeaderButtons HeaderButtonComponent={CustomizeHeaderButton}>
           <Item
             title="Favorite"
-            iconName="ios-star"
+            iconName={isFavorite ? "ios-star" : "ios-star-outline"}
             onPress={() => {
-              console.log("Marked:", mealId);
               dispatch(toggleFavorite(mealId));
             }}
           />
         </HeaderButtons>
       ),
     });
-  }, [navigation]);
+  }, [navigation, isFavorite]);
 
   const {
     duration,
