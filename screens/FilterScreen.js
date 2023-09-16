@@ -22,6 +22,7 @@ function FilterScreen({ navigation }) {
 
   const saveFilters = () => {
     console.log(appliedFilters);
+    // navigation.setParams({ save: appliedFilters });
   };
 
   useEffect(() => {

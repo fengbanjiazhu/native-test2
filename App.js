@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import { enableScreens } from "react-native-screens";
 import { NavigationContainer } from "@react-navigation/native";
 
+import { Provider } from "react-redux";
+import mealStore from "./store/mealStore";
+
 import MainNavigation from "./navigation/MainNavigation";
 
 SplashScreen.preventAutoHideAsync();
@@ -30,8 +33,10 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <NavigationContainer>
-      <MainNavigation />
-    </NavigationContainer>
+    <Provider store={mealStore}>
+      <NavigationContainer>
+        <MainNavigation />
+      </NavigationContainer>
+    </Provider>
   );
 }

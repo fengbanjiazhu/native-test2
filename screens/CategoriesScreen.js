@@ -9,7 +9,7 @@ import { DrawerActions } from "@react-navigation/native";
 
 import { CATEGORIES } from "../data/dummy-data";
 
-function CategoriesScreen({ navigation }) {
+function CategoriesScreen({ route, navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
