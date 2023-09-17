@@ -24,7 +24,7 @@ const FilterScreenWrapper = () => {
 function MainNavigation() {
   return (
     <Drawer.Navigator
-      initialRouteName="Favorite"
+      initialRouteName="mealsAndFavorite"
       screenOptions={{
         headerShown: false,
         drawerActiveTintColor: Colors.accentColor,
@@ -32,7 +32,7 @@ function MainNavigation() {
       }}
     >
       <Drawer.Screen
-        name="Favorite"
+        name="mealsAndFavorite"
         options={{ drawerLabel: "Meals" }}
         component={MealAndFavNavigation}
       />

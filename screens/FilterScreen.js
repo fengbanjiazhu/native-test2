@@ -25,8 +25,9 @@ function FilterScreen({ navigation }) {
   };
 
   const saveFilters = () => {
-    // console.log(appliedFilters);
     dispatch(filterMeal(appliedFilters));
+
+    navigation.navigate("mealsAndFavorite");
   };
 
   useEffect(() => {
