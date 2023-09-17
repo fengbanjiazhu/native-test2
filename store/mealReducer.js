@@ -20,10 +20,21 @@ const mealSlice = createSlice({
         state.favoriteMealsId.push(action.payload);
       }
     },
+    filterMeal(state, action) {
+      const { glutenFree, lactoseFree, vegan, vegetarian } = action.payload;
+      state.filteredMeals = state.meals.filter((meal) => {
+        if (glutenFree && !meal.isGlutenFree) return false;
+        if (lactoseFree && !meal.isLactoseFree) return false;
+        if (vegan && !meal.isVegan) return false;
+        if (vegetarian && !meal.isVegetarian) return false;
+        return true;
+      });
+      // {"glutenFree": true, "lactoseFree": false, "vegan": false, "vegetarian": false}
+    },
   },
 });
 
-export const { toggleFavorite } = mealSlice.actions;
+export const { toggleFavorite, filterMeal } = mealSlice.actions;
 
 export default mealSlice.reducer;
 
