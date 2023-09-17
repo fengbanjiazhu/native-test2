@@ -29,7 +29,6 @@ const mealSlice = createSlice({
         if (vegetarian && !meal.isVegetarian) return false;
         return true;
       });
-      // {"glutenFree": true, "lactoseFree": false, "vegan": false, "vegetarian": false}
     },
   },
 });
