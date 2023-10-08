@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FilterScreen from "../screens/FilterScreen";
 import MealAndFavNavigation from "./MealAndFavNavigation";
+import AnimationTest from "../animation/AnimationTest";
 
 import Colors from "../constants/Colors";
 
@@ -40,6 +41,11 @@ function MainNavigation() {
         name="Filter"
         options={{ drawerLabel: "Filter" }}
         component={FilterScreenWrapper}
+      />
+      <Drawer.Screen
+        name="Animation"
+        options={{ drawerLabel: "Animation" }}
+        component={AnimationTest}
       />
     </Drawer.Navigator>
   );
