@@ -2,11 +2,8 @@ import { View, Text, Animated, Button, StyleSheet } from "react-native";
 import React, { useRef } from "react";
 
 const AnimationTest = () => {
-  const rotate = useRef(new Animated.Value(0)).current;
-  const rotateValue = rotate.interpolate({
-    inputRange: [0, 30],
-    outputRange: ["0deg", "30deg"],
-  });
+  const scale = useRef(new Animated.Value(1)).current;
+  const opacity = useRef(new Animated.Value(1)).current;
 
   return (
     <View style={styles.root}>
@@ -14,8 +11,13 @@ const AnimationTest = () => {
       <Button
         title="Click!"
         onPress={() => {
-          Animated.timing(rotate, {
-            toValue: 30,
+          Animated.timing(scale, {
+            toValue: 1.5,
+            duration: 1000,
+            useNativeDriver: false,
+          }).start();
+          Animated.timing(opacity, {
+            toValue: 0.5,
             duration: 1000,
             useNativeDriver: false,
           }).start();
@@ -23,7 +25,7 @@ const AnimationTest = () => {
       />
 
       <Animated.View
-        style={[styles.container, { transform: [{ rotate: rotateValue }] }]}
+        style={[styles.container, { transform: [{ scale: scale }] }, { opacity: opacity }]}
       ></Animated.View>
     </View>
   );
@@ -57,3 +59,8 @@ export default AnimationTest;
 //           }).start();
 
 // rotate
+// const rotate = useRef(new Animated.Value(0)).current;
+// const rotateValue = rotate.interpolate({
+//     inputRange: [0, 30],
+//     outputRange: ["0deg", "30deg"],
+//   });
