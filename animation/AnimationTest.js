@@ -2,7 +2,11 @@ import { View, Text, Animated, Button, StyleSheet } from "react-native";
 import React, { useRef } from "react";
 
 const AnimationTest = () => {
-  const marginLeft = useRef(new Animated.Value(0)).current;
+  const rotate = useRef(new Animated.Value(0)).current;
+  const rotateValue = rotate.interpolate({
+    inputRange: [0, 30],
+    outputRange: ["0deg", "30deg"],
+  });
 
   return (
     <View style={styles.root}>
@@ -10,15 +14,17 @@ const AnimationTest = () => {
       <Button
         title="Click!"
         onPress={() => {
-          Animated.timing(marginLeft, {
-            toValue: 200,
+          Animated.timing(rotate, {
+            toValue: 30,
             duration: 1000,
             useNativeDriver: false,
           }).start();
         }}
       />
 
-      <Animated.View style={[styles.container, { marginLeft: marginLeft }]}></Animated.View>
+      <Animated.View
+        style={[styles.container, { transform: [{ rotate: rotateValue }] }]}
+      ></Animated.View>
     </View>
   );
 };
@@ -34,8 +40,20 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     backgroundColor: "#3050ff",
-    marginTop: 20,
+    marginTop: 60,
+    marginLeft: 60,
   },
 });
 
 export default AnimationTest;
+
+// basic
+// const marginLeft = useRef(new Animated.Value(0)).current;
+// { marginLeft: marginLeft }
+// Animated.timing(marginLeft, {
+//             toValue: 200,
+//             duration: 1000,
+//             useNativeDriver: false,
+//           }).start();
+
+// rotate
