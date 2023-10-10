@@ -3,7 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FilterScreen from "../screens/FilterScreen";
 import MealAndFavNavigation from "./MealAndFavNavigation";
-import AnimationTest from "../animation/AnimationTest";
+import LayoutAnimationTest from "../animation/LayoutAnimationTest";
 
 import Colors from "../constants/Colors";
 
@@ -45,7 +45,7 @@ function MainNavigation() {
       <Drawer.Screen
         name="Animation"
         options={{ drawerLabel: "Animation" }}
-        component={AnimationTest}
+        component={LayoutAnimationTest}
       />
     </Drawer.Navigator>
   );

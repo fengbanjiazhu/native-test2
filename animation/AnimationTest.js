@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 
 const AnimationTest = () => {
   const scale = useRef(new Animated.Value(1)).current;
-  const opacity = useRef(new Animated.Value(1)).current;
+  const marginLeft = useRef(new Animated.Value(0)).current;
 
   return (
     <View style={styles.root}>
@@ -11,21 +11,24 @@ const AnimationTest = () => {
       <Button
         title="Click!"
         onPress={() => {
-          Animated.timing(scale, {
+          const moveX = Animated.timing(marginLeft, {
+            toValue: 200,
+            duration: 1000,
+            useNativeDriver: false,
+          });
+
+          const scaleAni = Animated.timing(scale, {
             toValue: 1.5,
             duration: 1000,
             useNativeDriver: false,
-          }).start();
-          Animated.timing(opacity, {
-            toValue: 0.5,
-            duration: 1000,
-            useNativeDriver: false,
-          }).start();
+          });
+
+          Animated.sequence([moveX, Animated.delay(500), scaleAni]).start();
         }}
       />
 
       <Animated.View
-        style={[styles.container, { transform: [{ scale: scale }] }, { opacity: opacity }]}
+        style={[styles.container, { transform: [{ scale: scale }, { translateX: marginLeft }] }]}
       ></Animated.View>
     </View>
   );
@@ -64,3 +67,17 @@ export default AnimationTest;
 //     inputRange: [0, 30],
 //     outputRange: ["0deg", "30deg"],
 //   });
+
+// Decay & Spring
+// Animated.decay(marginLeft, {
+//   velocity: 1,
+//   deceleration: 0.997,
+//   useNativeDriver: false,
+// }).start();
+
+// Animated.spring(marginLeft, {
+//   toValue: 1.5,
+//   speed: 13,
+//   useNativeDriver: false,
+//   bounciness: 10,
+// }).start();
